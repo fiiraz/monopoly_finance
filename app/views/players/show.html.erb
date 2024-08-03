@@ -1,0 +1,46 @@
+<h1><%= @player.name %></h1>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @player.balance %>
+</p>
+
+<h2>Transfer Money</h2>
+<%= form_with url: transfer_player_path(@player), method: :post, local: true do %>
+  <div>
+    <%= label_tag :recipient_id, 'Recipient' %>
+    <%= select_tag :recipient_id, options_from_collection_for_select(Player.where.not(id: @player.id), :id, :name) %>
+  </div>
+  <div>
+    <%= label_tag :amount, 'Amount' %>
+    <%= number_field_tag :amount %>
+  </div>
+  <div>
+    <%= submit_tag 'Transfer' %>
+  </div>
+<% end %>
+
+<h2>Withdraw Money</h2>
+<%= form_with url: withdraw_player_path(@player), method: :post, local: true do %>
+  <div>
+    <%= label_tag :amount, 'Amount' %>
+    <%= number_field_tag :amount %>
+  </div>
+  <div>
+    <%= submit_tag 'Withdraw' %>
+  </div>
+<% end %>
+
+<h2>Deposit Money</h2>
+<%= form_with url: deposit_player_path(@player), method: :post, local: true do %>
+  <div>
+    <%= label_tag :amount, 'Amount' %>
+    <%= number_field_tag :amount %>
+  </div>
+  <div>
+    <%= submit_tag 'Deposit' %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>

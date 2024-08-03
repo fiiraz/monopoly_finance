@@ -1,0 +1,29 @@
+<h1>Players</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Balance</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= player.balance %></td>
+      <td>
+        <%= link_to 'Show', player %>
+        <%= link_to 'Edit', edit_player_path(player) %>
+        <%= form_with(model: player, local: true, method: :delete) do |form| %>
+          <%= form.submit 'Destroy', data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <%= link_to 'Transfer', player_path(player), method: :post %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Player', new_player_path %>
