@@ -1,5 +1,71 @@
 <h1>Editing Player</h1>
 
+<style>
+    /* Genel stil ayarları */
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    form {
+        margin-bottom: 30px; /* Form ile diğer öğeler arasına boşluk ekler */
+    }
+
+    div {
+        margin-bottom: 15px; /* Form elemanları arasına boşluk ekler */
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px; /* Etiket ile input arasına boşluk ekler */
+    }
+
+    input[type="text"], input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    #error_explanation {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid red;
+        border-radius: 4px;
+        background-color: #fdd;
+    }
+
+    #error_explanation h2 {
+        margin-top: 0;
+        color: red;
+    }
+
+    #error_explanation ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    #error_explanation li {
+        color: red;
+    }
+
+    a {
+        margin-right: 10px; /* Linkler arasına boşluk ekler */
+    }
+</style>
+
 <%= form_with(model: @player, local: true) do |form| %>
   <% if @player.errors.any? %>
     <div id="error_explanation">

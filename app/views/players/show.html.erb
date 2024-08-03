@@ -5,6 +5,55 @@
   <%= @player.balance %>
 </p>
 
+<style>
+    /* Genel stil ayarları */
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    form {
+        margin-bottom: 30px; /* Formlar arasına boşluk ekler */
+    }
+
+    div {
+        margin-bottom: 10px; /* Form elemanları arasına boşluk ekler */
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    select, input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    a {
+        margin-right: 10px; /* Linkler arasına boşluk ekler */
+    }
+</style>
+
 <h2>Transfer Money</h2>
 <%= form_with url: transfer_player_path(@player), method: :post, local: true do %>
   <div>

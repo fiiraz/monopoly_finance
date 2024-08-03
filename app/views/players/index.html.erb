@@ -1,5 +1,94 @@
 <h1>Players</h1>
 
+<style>
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+
+    /* Button styling */
+    td a, td form {
+        margin-right: 10px; /* Butonlar arasına 10px boşluk ekler */
+    }
+
+    td form {
+        display: inline; /* Formları yatay olarak düzenler */
+    }
+
+    /* New Player link styling */
+    .new-player-link {
+        display: inline-block;
+        margin-top: 10px; /* 'New Player' linkinin üstüne boşluk ekler */
+    }
+
+    /* Buton stil ayarları */
+    .action-button {
+        display: inline-block;
+        padding: 8px 12px;
+        margin-right: 10px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        background-color: #007bff;
+        border-radius: 4px;
+        border: 1px solid #007bff;
+    }
+
+    .action-button:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .action-button.destroy {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .action-button.destroy:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    /* Form submit button styling */
+    td form input[type="submit"] {
+        display: inline-block;
+        padding: 8px 12px;
+        margin-right: 10px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        background-color: #007bff;
+        border-radius: 4px;
+        border: 1px solid #007bff;
+        cursor: pointer;
+    }
+
+    td form input[type="submit"].destroy {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    td form input[type="submit"]:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    td form input[type="submit"].destroy:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+</style>
+
 <table>
   <thead>
   <tr>
@@ -14,16 +103,16 @@
       <td><%= player.name %></td>
       <td><%= player.balance %></td>
       <td>
-        <%= link_to 'Show', player %>
-        <%= link_to 'Edit', edit_player_path(player) %>
+        <%= link_to 'Show', player, class: 'action-button' %>
+        <%= link_to 'Edit', edit_player_path(player), class: 'action-button' %>
         <%= form_with(model: player, local: true, method: :delete) do |form| %>
-          <%= form.submit 'Destroy', data: { confirm: 'Are you sure?' } %>
+          <%= form.submit 'Destroy', class: 'action-button destroy', data: { confirm: 'Are you sure?' } %>
         <% end %>
-        <%= link_to 'Transfer', player_path(player), method: :post %>
+        <%= link_to 'Transfer', player_path(player), method: :post, class: 'action-button' %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Player', new_player_path %>
+<%= link_to 'New Player', new_player_path, class: 'new-player-link' %>
