@@ -87,6 +87,32 @@
         background-color: #c82333;
         border-color: #bd2130;
     }
+
+    /* Dice result styling */
+    .dice-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .dice-box {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        margin: 0 10px;
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+        text-align: center;
+        background-color: #f4f4f4;
+    }
+
+    .dice-result-text {
+        margin-top: 10px;
+        font-size: 18px;
+    }
 </style>
 
 <table>
@@ -116,3 +142,30 @@
 </table>
 
 <%= link_to 'New Player', new_player_path, class: 'new-player-link' %>
+
+<h2>Roll Dice</h2>
+<button id="roll-dice-button" class="action-button">Roll Dice</button>
+<div class="dice-container">
+  <div id="dice1" class="dice-box"></div>
+  <div id="dice2" class="dice-box"></div>
+</div>
+<p id="dice-result" class="dice-result-text"></p>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const rollDiceButton = document.getElementById('roll-dice-button');
+        const dice1Box = document.getElementById('dice1');
+        const dice2Box = document.getElementById('dice2');
+        const diceResult = document.getElementById('dice-result');
+
+        rollDiceButton.addEventListener('click', function() {
+            const dice1 = Math.floor(Math.random() * 6) + 1;
+            const dice2 = Math.floor(Math.random() * 6) + 1;
+            const total = dice1 + dice2;
+
+            dice1Box.textContent = dice1;
+            dice2Box.textContent = dice2;
+            diceResult.textContent = `Total: ${total}`;
+        });
+    });
+</script>
