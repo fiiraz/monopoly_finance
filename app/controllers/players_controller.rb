@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
   before_action :set_player, only: %i[show edit update destroy transfer withdraw deposit]
 
   def index
-    @players = Player.all
+    @players = Player.order(balance: :desc)
   end
 
   def show
